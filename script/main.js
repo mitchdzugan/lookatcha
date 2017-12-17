@@ -3,23 +3,23 @@ window.buttonClick = function() {
 
 var tracks = {
 	introLoop: {
-		url: "http://res.cloudinary.com/mitchdzugan/video/upload/v1513530889/IntroLoop_dfazzw.mp3",
+		url: "./tracks/IntroLoop.mp3",
 		size: .499,
 	},
 	lookAtCha: {
-		url: "http://res.cloudinary.com/mitchdzugan/video/upload/v1513530887/LookATCHA_zefff0.mp3",
+		url: "./tracks/LookATCHA.mp3",
 		size: .014,
 	},
 	beatNoVocals: {
-		url: "http://res.cloudinary.com/mitchdzugan/video/upload/v1513530893/BeatNoVocals_trq1nl.mp3",
+		url: "./tracks/BeatNoVocals.mp3",
 		size: .539,
 	},
 	beatVocals: {
-		url: "http://res.cloudinary.com/mitchdzugan/video/upload/v1513530889/BeatVocals_piovhr.mp3",
+		url: "./tracks/BeatVocals.mp3",
 		size: .565,
 	},
 	songRest: {
-		url: "http://res.cloudinary.com/mitchdzugan/video/upload/v1513530910/SongRest_j2apdn.mp3",
+		url: "./tracks/SongRest.mp3",
 		size: 11.9,
 	}
 };
