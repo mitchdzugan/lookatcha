@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+	<title>LOOKATCHA</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.6/howler.min.js"></script>
+	<script src="./script/main.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Buttons/2.0.0/css/buttons.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
+</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+		}
+		#loader {
+			position: absolute;
+			left: 0;
+			right: 0;
+			overflow: hidden;
+			height: 0vh;
+			transition: height 0.5s;
+		}
+		#main {
+			position: relative;
+			background-image: url('./images/background.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			height: 100vh;
+			width: 100vw;
+			background-position-x: right;
+			background-position-y: bottom;
+		}
+		#default {
+			background-image: url('./images/default.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			height: 100vh;
+			width: 100vw;
+			background-position-x: center;
+			background-position-y: bottom;
+		}
+		#buttonHolder {
+			position: absolute;
+			bottom: 10vh;
+			width: 100vw;
+			display: flex;
+			justify-content: center;
+		}
+
+		#button {
+			font-family: 'Chewy', cursive;
+		}
+
+		#button:active {
+			color: #666;
+		}
+	</style>
+<body>
+	<div id="default">
+		<div id="loader">
+			<div id="main">
+				<div id="buttonHolder">
+					<a onclick="window.buttonClick()" id="button" class="button button-3d">
+						LOOK AT CHA
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
