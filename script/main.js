@@ -1,6 +1,12 @@
 window.buttonClick = function() {
 }
 
+window.reupholster = function() {
+}
+
+window.onkeydown = function() {
+}
+
 var tracks = {
 	introLoop: {
 		url: "./tracks/IntroLoop.mp3",
@@ -21,6 +27,18 @@ var tracks = {
 	songRest: {
 		url: "./tracks/SongRest.mp3",
 		size: 11.9,
+	},
+	reupholster: {
+		url: "./tracks/reupholster.mp3",
+		size: .03,
+	},
+	dontZone: {
+		url: "./tracks/dontZone.mp3",
+		size: .02,
+	},
+	inZone: {
+		url: "./tracks/inZone.mp3",
+		size: .021,
 	}
 };
 
@@ -28,7 +46,23 @@ var playLookAtCha = function() {
 	tracks.lookAtCha.player.play();
 }
 
+function onResize() {
+	var width = document.documentElement.clientWidth;
+	var height = document.documentElement.clientHeight;
+
+	var scale = height / 1600;
+	if (width / height > 2560 / 1600) {
+		scale = width / 2560;
+	}
+
+	document.getElementById("reupholster").style.right = Math.round(scale * 1200) + "px";
+	document.getElementById("reupholster").style.bottom = Math.round(scale * 450) + "px";
+}
+
+window.onresize = onResize;
+
 window.onload = function() {
+	onResize();
 	var loadStart = Date.now();
 	var loadInterval = setInterval(function() {
 		var total = Object.keys(tracks).reduce(function(sum, track) {
@@ -50,7 +84,6 @@ window.onload = function() {
 		if (loadedCount) {
 			loadRate = loadTimeRateSum / loadedCount;
 		}
-		console.log("loadRate", loadRate);
 		var soFar = Object.keys(tracks).reduce(function(sum, track) {
 			if (tracks[track].player) {
 				return sum + tracks[track].size;
@@ -75,6 +108,37 @@ window.onload = function() {
 				var playStart = Date.now();
 				tracks.introLoop.player.loop(true);
 				tracks.introLoop.player.play();
+
+				setTimeout(function() {
+					document.getElementById("loader").style.transition = "height 0s";
+				},1000)
+
+				window.reupholster = function() {
+					tracks.reupholster.player.play();
+				}
+
+				var inARow = 0;
+				var lastClickTime = null;
+				window.onkeydown = function() {
+					var now = Date.now();
+					if (lastClickTime) {
+						var diff = now - lastClickTime;
+						if (diff > 10) {
+							if (diff > 1231 && diff < 1531) {
+								inARow++;
+								if (inARow == 4) {
+									tracks.dontZone.player.play();
+								}
+								if (inARow > 11) {
+									tracks.inZone.player.play();
+								}
+							} else {
+								inARow = 0;
+							}
+						}
+					}
+					lastClickTime = now;
+				}
 
 				window.buttonClick = function() {
 					var clickTime = Date.now();

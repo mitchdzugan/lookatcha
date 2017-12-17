@@ -57,8 +57,16 @@
 		#button:active {
 			color: #666;
 		}
+		#reupholster {
+			position: absolute;
+			height: 50px;
+			width: 50px;
+			z-index: 100;
+			right: 0;
+			bottom: 0;
+		}
 	</style>
-<body>
+<body onkeydown="window.onkeydown()">
 	<div id="default">
 		<div id="loader">
 			<div id="main">
@@ -70,5 +78,6 @@
 			</div>
 		</div>
 	</div>
+	<div id="reupholster" onclick="window.reupholster()"></div>
 </body>
 </html>
